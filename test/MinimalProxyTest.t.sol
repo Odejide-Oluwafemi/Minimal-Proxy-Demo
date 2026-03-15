@@ -15,14 +15,14 @@ contract MinimalProxyTest is Test {
     proxyContract = new MinimalProxy(address(testContract));
   }
 
-  function test__ProxyWorks() public view {
+  function test__ProxyWorks() public {
     uint256 value = 77;
     string memory signature = "setValue(uint256)";
 
     bytes memory callBytes = HelperFunctions.getFunctionSig(signature, value);
-    console2.log(string(sig));
+    console2.log(string(callBytes));
 
-    (bool success, ) = proxyContract.call(callBytes);
+    (bool success, ) = address(proxyContract).call(callBytes);
     require(success);
 
     assertEq(testContract.getValue(), value);
