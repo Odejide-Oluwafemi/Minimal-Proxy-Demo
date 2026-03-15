@@ -1,4 +1,7 @@
-contract Test {
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.3;
+
+contract TestContract {
     uint256 public value;
 
     function setValue(uint256 _value) public {
